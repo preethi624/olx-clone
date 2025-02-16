@@ -1,0 +1,55 @@
+.footerParentDiv {
+    width: 100vw;
+    background: #f8f9fa;
+    padding-top: 20px;
+    font-family: Arial, sans-serif;
+    left: 0;
+  }
+  
+  .footerParentDiv .content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: #ebeeef;
+    padding: 20px 10px;
+  }
+  
+  .footerParentDiv .content .heading {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footerParentDiv .list ul {
+    list-style: none; /* Removes bullet points */
+    padding: 0;
+  }
+  
+  .footerParentDiv .list ul li {
+    margin: 5px 0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .footerParentDiv .list ul li:hover {
+    color: #007bff;
+    text-decoration: underline;
+  }
+  
+  .footerParentDiv .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 15px;
+    background: #002f34;
+    color: whitesmoke;
+    text-align: center;
+  }
+  
+  .footerParentDiv .footer p {
+    margin: 5px;
+    font-size: 14px;
+  }
+  

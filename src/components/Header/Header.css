@@ -1,0 +1,171 @@
+/* General Styles */
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Header container */
+  .header {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  /* Logo */
+  .logo img {
+    width: 70px;
+    height: 75px;
+    font-weight: bold;
+    color: #002f34;
+    padding-bottom: 25px;
+    padding-right: 0;
+  }
+  .logo{
+    padding-right: 0;
+
+  }
+  
+  /* Location dropdown */
+  .location {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 4px;
+    width: 300px;
+    height: 45px;
+   
+    
+  }
+  
+  .location input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 80px;
+    padding-left: 0;
+    margin-left: 0;
+    
+  }
+  .search{
+    width: 90px;
+    height: 90px;
+  }
+  
+  .dropdown-icon {
+    margin-left: 175px;
+    font-size: 25px;
+    width: 90px;
+    height: 90px;
+  }
+  
+  /* Search bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 400px;
+    height: 45px;
+  }
+  .btn{
+    height: 50px;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 8px;
+    border: none;
+    outline: none;
+  }
+  
+  .search-bar button {
+    background-color: #002f34;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  /* Right-side items */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .language {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .icon {
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .login {
+    text-decoration: none;
+    color: #002f34;
+    font-weight: bold;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+  
+  .sell-btn {
+    background-color: #ffcc00;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .sell-btn:hover {
+    background-color: #e6b800;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .search-bar {
+      width: 100%;
+    }
+  
+    .header-right {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+  
