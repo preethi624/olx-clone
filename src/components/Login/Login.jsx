@@ -16,22 +16,25 @@ function Login() {
     const navigate=useNavigate();
     const validateForm = () => {
       const errors = {};
-  
-      if (!email) {
-        errors.email = 'Email is required';
-      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errors.email = 'Please enter a valid email address';
+      const trimmedEmail = email.trim();
+      const trimmedPassword = password.trim();
+
+      if (!trimmedEmail) {
+          errors.email = 'Email is required';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+          errors.email = 'Please enter a valid email address';
       }
-  
-      if (!password) {
-        errors.password = 'Password is required';
-      } else if (password.length < 6) {
-        errors.password = 'Password must be at least 6 characters';
+
+      if (!trimmedPassword) {
+          errors.password = 'Password is required';
+      } else if (trimmedPassword.length < 6) {
+          errors.password = 'Password must be at least 6 characters';
       }
-  
+
       setErrors(errors);
       return Object.keys(errors).length === 0;
-    };
+  };
+
     const handleLogin=(e)=>{
         e.preventDefault()
         if(validateForm()){

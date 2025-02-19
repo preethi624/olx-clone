@@ -34,6 +34,10 @@ export default function Header() {
 
 
   },[auth]);
+console.log(user);
+
+ 
+  
   const handleLogout=()=>{
     signOut(auth).then(()=>{
       console.log("User signed out");
@@ -74,6 +78,7 @@ export default function Header() {
         <FaHeart className="icon" />
         <div>
           {user?(
+            
             <div className="user-dropdown">
             <div className="user-info" onClick={() => setDropdownOpen(!dropdownOpen)}>
               <FaUser className="icon" />
@@ -89,7 +94,7 @@ export default function Header() {
           ):(<Link to="/login" className="login">Login</Link>)}
         </div>
        
-        <Link to="/create"  className="sell-btn">+ SELL</Link>
+        {user&&<Link to="/create"  className="sell-btn">+ SELL</Link>}
       </div>
     </header>
     {showLogin && <Login onClose={()=>setShowLogin(false)}/>}

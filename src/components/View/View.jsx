@@ -1,33 +1,41 @@
 import { useContext, useState, useEffect } from "react";
-import { PostContext } from "../../store/PostContext";
-import { collection, query, where, getDocs } from "firebase/firestore"; // Firestore functions
+import { getAuth, onAuthStateChanged } from "firebase/auth"; 
+import { getFirestore, doc, getDoc } from "firebase/firestore"; 
 import "./View.css";
 import { firebaseContext } from "../../store/firebaseContext";
+import { PostContext } from "../../store/PostContext";
 
 function View() {
-  const { db } = useContext(firebaseContext);
-  const [userDetails, setUserDetails] = useState(null);
   const { postDetails } = useContext(PostContext);
+  const { auth } = useContext(firebaseContext);
+  const db = getFirestore(); 
+  const [userDetails, setUserDetails] = useState(null);
 
   useEffect(() => {
     const fetchUserDetails = async () => {
       if (postDetails?.userId) {
-        try {
-          const usersRef = collection(db, "user");
-          const q = query(usersRef, where("uid", "==", postDetails.userId));
-          const querySnapshot = await getDocs(q);
+        console.log("User ID:", postDetails.userId);
 
-          querySnapshot.forEach((doc) => {
-            setUserDetails(doc.data());
+        
+        const userDocRef = doc(db, "users", postDetails.userId);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          const userData = userDocSnap.data();
+          setUserDetails({
+            username: userData.username || "Unknown User",
+            phone: userData.phone || "No phone number",
+            email: userData.email || "No email",
           });
-        } catch (error) {
-          console.error("Error fetching user details:", error);
+          console.log("Fetched user details from Firestore:", userData);
+        } else {
+          console.log("No matching user found in Firestore");
         }
       }
     };
 
     fetchUserDetails();
-  }, [postDetails]);
+  }, [postDetails, db]);
 
   return (
     <div className="viewParentDiv">
@@ -44,15 +52,17 @@ function View() {
         {userDetails ? (
           <div className="viewContactDetails">
             <p>Seller details</p>
-            <p>{userDetails.name}</p>
+            <p>{userDetails.username}</p>
+            <p>{userDetails.email}</p>
             <p>{userDetails.phone}</p>
           </div>
-        ) : (<div className="viewContactDetails">
-        <p>Seller details</p>
-        <p>Seller Name</p>
-        <p>Seller Phone number</p>
-      </div>
-    ) }
+        ) : (
+          <div className="viewContactDetails">
+            <p>Seller details</p>
+            <p>Seller Name</p>
+            <p>Seller Phone number</p>
+          </div>
+        )}
       </div>
     </div>
   );

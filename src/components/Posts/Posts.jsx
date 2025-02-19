@@ -11,7 +11,7 @@ function Posts() {
   const { db } = useContext(firebaseContext);
   const [products, setProducts] = useState([]);
   const location = useLocation();
-  const { setPostDetails, searchQuery ,setSearchQuery} = useContext(PostContext);
+  const { postDetails,setPostDetails, searchQuery ,setSearchQuery} = useContext(PostContext);
   const navigate = useNavigate();
 
   useEffect(() => {
